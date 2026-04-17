@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wsi-mil-al-pgt"
+version = "0.1.0"
+description = "WSI weakly-supervised MIL + active learning + ROI recommendation"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.setuptools.packages.find]
+include = ["wsi_mil*"]

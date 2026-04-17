@@ -1,0 +1,32 @@
+experiment:
+  name: stage1_parotid_seed11
+  out_dir: runs/stage1_parotid_seed11
+  seed: 11
+
+data:
+  splits_csv: data/metadata/parotid_splits_patient.csv
+  bag_index_json: data/metadata/parotid_bag_index.json
+  img_size: 224
+  bag_size: 256
+  num_workers: 12
+  tile_size: 256
+  eval_tile_bs: 64
+  full_bag_val: true
+  full_bag_test: true
+
+evaluation:
+  select_by: val_auc_fullbag
+
+model:
+  embed_dim: 512
+  attn_dim: 256
+  encoder_pretrained: true
+  encoder_dropout: 0.0
+  mil_dropout: 0.25
+
+train:
+  epochs: 20
+  batch_size: 1
+  lr: 0.0002
+  weight_decay: 0.0001
+  amp: true

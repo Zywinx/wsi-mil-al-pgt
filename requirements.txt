@@ -1,0 +1,10 @@
+numpy==1.26.4
+pandas==2.2.2
+scikit-learn==1.5.1
+tqdm==4.66.5
+Pillow==10.4.0
+opencv-python-headless==4.10.0.84
+matplotlib==3.9.2
+PyYAML==6.0.2
+rich==13.8.1
+einops==0.8.0
