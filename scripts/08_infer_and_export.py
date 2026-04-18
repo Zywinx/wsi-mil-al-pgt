@@ -5,7 +5,7 @@ import torch
 import pandas as pd
 from pathlib import Path
 from tqdm import tqdm
-from torch.cuda.amp import autocast
+from torch.amp import autocast
 from torch.utils.data import DataLoader
 
 from wsi_mil.datasets.bag_dataset import SlideBagDataset, build_transforms
@@ -93,7 +93,7 @@ def main():
         tile_ds = SlideTileDataset(tile_records, transform)
         tile_loader = DataLoader(
             tile_ds, batch_size=args.eval_tile_bs, 
-            shuffle=False, num_workers=cfg["data"]["num_workers"], pin_memory=True
+            shuffle=False, num_workers=cfg["data"]["eval_num_workers"], pin_memory=True
         )
         
         features_list = []
@@ -102,7 +102,7 @@ def main():
         # 分块提特征
         for X, batch_meta in tile_loader:
             X = X.to(device, non_blocking=True)
-            with autocast( enabled=cfg["train"]["amp"]):
+            with autocast('cuda', enabled=cfg["train"]["amp"]):
                 chunk_feat = model.encoder(X) 
             features_list.append(chunk_feat.cpu())
             
@@ -117,7 +117,7 @@ def main():
         # 拼接整图特征过 MIL 头
         full_features = torch.cat(features_list, dim=0).unsqueeze(0).to(device)
         
-        with autocast( enabled=cfg["train"]["amp"]):
+        with autocast('cuda', enabled=cfg["train"]["amp"]):
             outputs = model.mil(full_features)
             slide_logit = outputs[0]
             attention_weights = outputs[1] if len(outputs) > 1 else None 
