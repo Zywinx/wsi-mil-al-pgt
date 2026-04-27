@@ -1,18 +1,18 @@
 experiment:
-  name: stage1_parotid_seed7
-  out_dir: runs/stage1_parotid_seed7
-  seed: 7
+  name: stage1_parotid_v2_split23_seed23
+  out_dir: runs/stage1_parotid_v2_split23_seed23
+  seed: 23
 
 data:
-  splits_csv: data/metadata/parotid_splits_patient_v2.csv
+  splits_csv: data/metadata/parotid_splits_patient_v2_seed23balanced.csv
   bag_index_json: data/metadata/parotid_bag_index_v2.json
   img_size: 224
   bag_size: 256
-  #num_workers: 12
+
   train_num_workers: 2
   eval_num_workers: 16
   eval_tile_bs: 64
-  
+
   tile_size: 256
   eval_tile_bs: 64
   full_bag_val: true

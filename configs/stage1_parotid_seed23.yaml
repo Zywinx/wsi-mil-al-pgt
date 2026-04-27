@@ -4,11 +4,15 @@ experiment:
   seed: 23
 
 data:
-  splits_csv: data/metadata/parotid_splits_patient.csv
-  bag_index_json: data/metadata/parotid_bag_index.json
+  splits_csv: data/metadata/parotid_splits_patient_v2.csv
+  bag_index_json: data/metadata/parotid_bag_index_v2.json
   img_size: 224
   bag_size: 256
-  num_workers: 12
+
+  train_num_workers: 2
+  eval_num_workers: 16
+  eval_tile_bs: 64
+
   tile_size: 256
   eval_tile_bs: 64
   full_bag_val: true

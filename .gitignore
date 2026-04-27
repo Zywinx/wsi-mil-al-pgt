@@ -1,84 +1,56 @@
-# Data directories (exclude large files)
-data/
-logs/
-runs/
-records/
-
-# Python cache and build files
+# Python cache
 __pycache__/
 *.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+.pytest_cache/
+.mypy_cache/
 
-# Virtual environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# IDE files
+# IDE
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
+.windsurf/
 
-# OS files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints
-
-# PyTorch model files (large)
-*.pth
-*.pt
-*.ckpt
-
-# Large dataset files
-*.h5
-*.hdf5
-*.npz
-*.pkl
-*.pickle
-
-# Temporary files
-*.tmp
-*.temp
-
-# Logs
+# Logs and run outputs
+logs/
+runs/
+results/
+outputs/
 *.log
 
-# Model outputs and checkpoints
+# Model weights / checkpoints
+*.pt
+*.pth
+*.ckpt
+*.safetensors
 checkpoints/
-models/
-outputs/
+weights/
+model_weights/
 
-# Cache directories
-.cache/
-cache/
+# WSI / tiles / features / large data
+*.sdpc
+*.svs
+*.tif
+*.tiff
+*.ndpi
+*.mrxs
+*.h5
+*.hdf5
+*.png
+*.jpg
+*.jpeg
+
+data/tiles/
+data/tiles_*/
+data/features/
+data/features_*/
+data/patches/
+data/patches_*/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Do not upload CSV/TXT metadata and text exports
+*.csv
+*.txt
+*.egg-info/
+*.json
